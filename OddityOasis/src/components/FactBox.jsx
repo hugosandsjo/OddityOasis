@@ -2,9 +2,22 @@ import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 
 const FactBoxContainer = styled.div`
-  background-color: #bebebe;
-  width: 400px;
-  padding: 1rem;
+  width: 100%;
+  text-align: left;
+  padding: 0 2rem;
+`;
+
+const Heading1 = styled.h1`
+  font-size: 78px;
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 1rem 0;
+`;
+
+const Paragraph = styled.p`
+  font-size: 32px;
+  line-height: 1.4;
+  max-width: 520px;
 `;
 
 function FactBox({ selectedFact }) {
@@ -46,12 +59,16 @@ function FactBox({ selectedFact }) {
   }, [selectedFact]);
 
   return (
-    <div>
+    <>
       <FactBoxContainer>
-        <h2>{selectedFact === "random" ? "Random Fact" : "Daily Fact"}</h2>
-        <p>{selectedFact === "random" ? randomFact : dailyFact}</p>
+        <Heading1>
+          {selectedFact === "random" ? "Random Fact" : "Daily Fact"}
+        </Heading1>
+        <Paragraph>
+          {selectedFact === "random" ? randomFact : dailyFact}
+        </Paragraph>
       </FactBoxContainer>
-    </div>
+    </>
   );
 }
 

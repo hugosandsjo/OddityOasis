@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 
 const Buttons = styled.div`
   display: flex;
-  flex-direction: column;
-  gap:10px;
-  }
+  flex-direction: row;
+  gap: 10px;
+  padding: 1rem;
 `;
 
 function ButtonContainer({ children }) {
