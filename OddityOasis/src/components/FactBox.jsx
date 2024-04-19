@@ -7,10 +7,9 @@ const FactBoxContainer = styled.div`
   padding: 1rem;
 `;
 
-function FactBox() {
+function FactBox({ selectedFact }) {
   const [randomFact, setRandomFact] = useState(null);
   const [dailyFact, setDailyFact] = useState(null);
-  const [selectedFact, setSelectedFact] = useState("random");
 
   async function fetchRandomFact() {
     try {
@@ -39,17 +38,18 @@ function FactBox() {
   }
 
   useEffect(() => {
-    fetchRandomFact();
-    fetchDailyFact();
-  }, []);
+    if (selectedFact === "random") {
+      fetchRandomFact();
+    } else if (selectedFact === "daily") {
+      fetchDailyFact();
+    }
+  }, [selectedFact]);
 
   return (
     <div>
       <FactBoxContainer>
         <h2>{selectedFact === "random" ? "Random Fact" : "Daily Fact"}</h2>
         <p>{selectedFact === "random" ? randomFact : dailyFact}</p>
-        <button onClick={() => setSelectedFact("random")}>Random Fact</button>
-        <button onClick={() => setSelectedFact("daily")}>Daily Fact</button>
       </FactBoxContainer>
     </div>
   );

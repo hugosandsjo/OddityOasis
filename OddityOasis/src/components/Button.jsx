@@ -9,8 +9,8 @@ const ButtonComponent = styled.button`
   }
 `;
 
-function Button({ text }) {
-  return <ButtonComponent>{text}</ButtonComponent>;
+function Button({ text, onClick }) {
+  return <ButtonComponent onClick={onClick}>{text}</ButtonComponent>;
 }
 
 export default Button;

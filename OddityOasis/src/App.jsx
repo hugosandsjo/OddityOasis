@@ -7,15 +7,17 @@ import ButtonContainer from "./components/ButtonContainer";
 import "./App.css";
 
 function App() {
+  const [selectedFact, setSelectedFact] = useState("random");
+
   return (
     <>
       <Header />
       <ButtonContainer>
-        <Button text="Random fact" />
-        <Button text="Today's fact" />
+        <Button text="Random fact" onClick={() => setSelectedFact("random")} />
+        <Button text="Today's fact" onClick={() => setSelectedFact("daily")} />
         <Button text="All facts" />
       </ButtonContainer>
-      <FactBox />
+      <FactBox selectedFact={selectedFact} />
     </>
   );
 }
