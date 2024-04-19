@@ -6,3 +6,7 @@ body {
   margin: 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+main {
+  margin: 64px;
+}
