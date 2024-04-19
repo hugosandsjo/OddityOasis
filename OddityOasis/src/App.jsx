@@ -1,10 +1,13 @@
 import { useState } from "react";
 import FactBox from "./components/FactBox";
+import Header from "./components/Header";
+import "./App.css";
 
 function App() {
   return (
     <>
-      <FactBox />
+  <Header />
+  <FactBox />
     </>
   );
 }
