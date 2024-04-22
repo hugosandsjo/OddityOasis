@@ -12,7 +12,7 @@ import "./App.css";
 function App() {
   const [selectedFact, setSelectedFact] = useState("daily");
   const [randomClickCount, setRandomClickCount] = useState(0);
-  const [selectedButton, setSelectedButton] = useState(0);
+  const [selectedButton, setSelectedButton] = useState(1);
 
   const handleRandomButtonClick = () => {
     setSelectedFact("random");
@@ -28,29 +28,14 @@ function App() {
         setSelectedFact("daily");
         setSelectedButton(1);
       },
-      className: selectedButton === 0 ? "selectedButton" : "",
+      className: selectedButton === 1 ? "selectedButton" : "",
     },
     {
       text: "Random fact",
       onClick: handleRandomButtonClick,
-      className: selectedButton === 1 ? "selectedButton" : "",
+      className: selectedButton === 0 ? "selectedButton" : "",
     },
   ];
-
-
-  return (
-    <>
-      <Header />
-      <ButtonContainer>
-        {buttons.map((button, index) => (
-          <Button
-            key={index}
-            text={button.text}
-            onClick={button.onClick}
-            className={button.className}
-          />
-        ))}
-      </ButtonContainer>
 
   const renderGenerateIcon = () => {
     if (selectedFact === "random") {
@@ -67,13 +52,17 @@ function App() {
 
   const renderButtons = () => {
     return buttons.map((button, index) => (
-      <Button key={index} text={button.text} onClick={button.onClick} />
+      <Button
+        key={index}
+        text={button.text}
+        onClick={button.onClick}
+        className={button.className}
+      />
     ));
   };
 
   const renderMainContent = () => {
     return (
-
       <BodyWrapper>
         <FactBox
           selectedFact={selectedFact}
