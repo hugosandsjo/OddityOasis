@@ -31,7 +31,7 @@ const Paragraph = styled.p`
   max-width: 520px;
 `;
 
-function FactBox({ selectedFact }) {
+function FactBox({ selectedFact, randomClickCount }) {
   const [randomFact, setRandomFact] = useState(null);
   const [dailyFact, setDailyFact] = useState(null);
 
@@ -67,7 +67,7 @@ function FactBox({ selectedFact }) {
     } else if (selectedFact === "daily") {
       fetchDailyFact();
     }
-  }, [selectedFact]);
+  }, [selectedFact, randomClickCount]);
 
   return (
     <>
