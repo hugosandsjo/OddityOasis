@@ -81,9 +81,6 @@ function FactBox({ selectedFact, randomClickCount }) {
         <Paragraph>
           {selectedFact === "random" ? randomFact : dailyFact}
         </Paragraph>
-        {selectedFact === "random" && (
-          <Paragraph>Random facts read: {randomClickCount}</Paragraph>
-        )}
       </FactBoxContainer>
     </>
   );

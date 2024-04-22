@@ -4,9 +4,10 @@ import Header from "./components/Header";
 import Button from "./components/Button";
 import ButtonContainer from "./components/ButtonContainer";
 import BoredBox from "./components/BoredBox";
+import BodyWrapper from "./components/BodyWrapper";
+import GenerateIcon from "./assets/generate.svg";
 
 import "./App.css";
-import BodyWrapper from "./components/BodyWrapper";
 
 function App() {
   const [selectedFact, setSelectedFact] = useState("daily");
@@ -36,6 +37,7 @@ function App() {
     },
   ];
 
+
   return (
     <>
       <Header />
@@ -49,13 +51,45 @@ function App() {
           />
         ))}
       </ButtonContainer>
+
+  const renderGenerateIcon = () => {
+    if (selectedFact === "random") {
+      return (
+        <img
+          src={GenerateIcon}
+          onClick={handleRandomButtonClick}
+          alt="Generate Icon"
+        />
+      );
+    }
+    return null;
+  };
+
+  const renderButtons = () => {
+    return buttons.map((button, index) => (
+      <Button key={index} text={button.text} onClick={button.onClick} />
+    ));
+  };
+
+  const renderMainContent = () => {
+    return (
+
       <BodyWrapper>
         <FactBox
           selectedFact={selectedFact}
           randomClickCount={randomClickCount}
         />
+        {renderGenerateIcon()}
         {randomClickCount >= 3 && <BoredBox />}
       </BodyWrapper>
+    );
+  };
+
+  return (
+    <>
+      <Header />
+      <ButtonContainer>{renderButtons()}</ButtonContainer>
+      {renderMainContent()}
     </>
   );
 }
