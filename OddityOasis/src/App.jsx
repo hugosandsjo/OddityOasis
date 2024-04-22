@@ -11,16 +11,29 @@ import BodyWrapper from "./components/BodyWrapper";
 function App() {
   const [selectedFact, setSelectedFact] = useState("daily");
   const [randomClickCount, setRandomClickCount] = useState(0);
+  const [selectedButton, setSelectedButton] = useState(0);
 
   const handleRandomButtonClick = () => {
     setSelectedFact("random");
     setRandomClickCount((prevCount) => prevCount + 1);
+    setSelectedButton(0);
     console.log(randomClickCount);
   };
 
   const buttons = [
-    { text: "Random fact", onClick: handleRandomButtonClick },
-    { text: "Today's fact", onClick: () => setSelectedFact("daily") },
+    {
+      text: "Today's fact",
+      onClick: () => {
+        setSelectedFact("daily");
+        setSelectedButton(1);
+      },
+      className: selectedButton === 0 ? "selectedButton" : "",
+    },
+    {
+      text: "Random fact",
+      onClick: handleRandomButtonClick,
+      className: selectedButton === 1 ? "selectedButton" : "",
+    },
   ];
 
   return (
@@ -28,7 +41,12 @@ function App() {
       <Header />
       <ButtonContainer>
         {buttons.map((button, index) => (
-          <Button key={index} text={button.text} onClick={button.onClick} />
+          <Button
+            key={index}
+            text={button.text}
+            onClick={button.onClick}
+            className={button.className}
+          />
         ))}
       </ButtonContainer>
       <BodyWrapper>

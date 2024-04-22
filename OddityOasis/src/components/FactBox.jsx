@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 
 const FactBoxContainer = styled(motion.div)`
   display: flex;
-
   flex-direction: column;
   text-align: left;
   padding: 0 2rem;
@@ -21,7 +20,7 @@ const Heading1 = styled.h1`
   line-height: 1.2;
   margin: 0.5rem 0;
   @media screen and (min-width: 768px) {
-    margin-left: 2rem;
+    margin-left: -2rem;
   }
 `;
 

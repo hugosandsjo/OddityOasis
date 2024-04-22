@@ -5,7 +5,7 @@ const HeaderComponent = styled.header`
   justify-content: space-between;
   align-items: center;
   margin: 0;
-  padding: 2rem;
+  padding: 0 2rem;
 `;
 
 const Header1 = styled.h1`
@@ -17,7 +17,6 @@ function Header() {
   return (
     <HeaderComponent>
       <Header1>Oddity Oasis</Header1>
-      <div>Menu</div>
     </HeaderComponent>
   );
 }
