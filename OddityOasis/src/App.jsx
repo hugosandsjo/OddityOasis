@@ -4,9 +4,9 @@ import Header from "./components/Header";
 import Button from "./components/Button";
 import ButtonContainer from "./components/ButtonContainer";
 import BoredBox from "./components/BoredBox";
+import BodyWrapper from "./components/BodyWrapper";
 
 import "./App.css";
-import BodyWrapper from "./components/BodyWrapper";
 
 function App() {
   const [selectedFact, setSelectedFact] = useState("daily");
@@ -23,14 +23,14 @@ function App() {
     { text: "Today's fact", onClick: () => setSelectedFact("daily") },
   ];
 
-  return (
-    <>
-      <Header />
-      <ButtonContainer>
-        {buttons.map((button, index) => (
-          <Button key={index} text={button.text} onClick={button.onClick} />
-        ))}
-      </ButtonContainer>
+  const renderButtons = () => {
+    return buttons.map((button, index) => (
+      <Button key={index} text={button.text} onClick={button.onClick} />
+    ));
+  };
+
+  const mainContent = () => {
+    return (
       <BodyWrapper>
         <FactBox
           selectedFact={selectedFact}
@@ -38,6 +38,14 @@ function App() {
         />
         {randomClickCount >= 3 && <BoredBox />}
       </BodyWrapper>
+    );
+  };
+
+  return (
+    <>
+      <Header />
+      <ButtonContainer>{renderButtons()}</ButtonContainer>
+      {mainContent()}
     </>
   );
 }
