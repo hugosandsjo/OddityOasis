@@ -3,9 +3,16 @@ import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 
 const FactBoxContainer = styled(motion.div)`
-  width: 100%;
+  display: flex;
+
+  flex-direction: column;
   text-align: left;
   padding: 0 2rem;
+
+  @media screen and (min-width: 768px) {
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const Heading1 = styled.h1`
@@ -13,6 +20,9 @@ const Heading1 = styled.h1`
   font-weight: 300;
   line-height: 1.2;
   margin: 0.5rem 0;
+  @media screen and (min-width: 768px) {
+    margin-left: 2rem;
+  }
 `;
 
 const Paragraph = styled.p`

@@ -6,6 +6,7 @@ import ButtonContainer from "./components/ButtonContainer";
 import BoredBox from "./components/BoredBox";
 
 import "./App.css";
+import BodyWrapper from "./components/BodyWrapper";
 
 function App() {
   const [selectedFact, setSelectedFact] = useState("daily");
@@ -20,7 +21,6 @@ function App() {
   const buttons = [
     { text: "Random fact", onClick: handleRandomButtonClick },
     { text: "Today's fact", onClick: () => setSelectedFact("daily") },
-    { text: "All facts", onClick: () => {} },
   ];
 
   return (
@@ -35,7 +35,6 @@ function App() {
         selectedFact={selectedFact}
         randomClickCount={randomClickCount}
       />
-      {randomClickCount >= 3 && <BoredBox />}
     </>
   );
 }
