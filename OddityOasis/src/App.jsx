@@ -16,13 +16,19 @@ function App() {
     setRandomClickCount((prevCount) => prevCount + 1);
   };
 
+  const buttons = [
+    { text: "Random fact", onClick: () => setSelectedFact("random") },
+    { text: "Today's fact", onClick: () => setSelectedFact("daily") },
+    { text: "All facts", onClick: () => {} },
+  ];
+
   return (
     <>
       <Header />
       <ButtonContainer>
-        <Button text="Random fact" onClick={handleRandomButtonClick} />
-        <Button text="Today's fact" onClick={() => setSelectedFact("daily")} />
-        <Button text="All facts" />
+{buttons.map((button, index) => (
+          <Button key={index} text={button.text} onClick={button.onClick} />
+        ))}
       </ButtonContainer>
       <FactBox selectedFact={selectedFact} />
       {randomClickCount >= 3 && <Bored />}
