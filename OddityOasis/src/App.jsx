@@ -35,6 +35,7 @@ function App() {
         selectedFact={selectedFact}
         randomClickCount={randomClickCount}
       />
+      {randomClickCount >= 3 && <BoredBox />}
     </>
   );
 }
