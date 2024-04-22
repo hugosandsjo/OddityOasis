@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
+import { motion } from "framer-motion";
 
-const FactBoxContainer = styled.div`
+const FactBoxContainer = styled(motion.div)`
   width: 100%;
   text-align: left;
   padding: 0 2rem;
@@ -11,7 +12,7 @@ const Heading1 = styled.h1`
   font-size: 78px;
   font-weight: 300;
   line-height: 1.2;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 `;
 
 const Paragraph = styled.p`
@@ -60,7 +61,11 @@ function FactBox({ selectedFact }) {
 
   return (
     <>
-      <FactBoxContainer>
+      <FactBoxContainer
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
         <Heading1>
           {selectedFact === "random" ? "Random Fact" : "Daily Fact"}
         </Heading1>
