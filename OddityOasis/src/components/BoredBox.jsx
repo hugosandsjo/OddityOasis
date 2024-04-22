@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 
-function Bored() {
+function BoredBox() {
   const [activity, setActivity] = useState(null);
   const [selectedType, setSelectedType] = useState("");
 
@@ -43,4 +43,4 @@ function Bored() {
   );
 }
 
-export default Bored;
+export default BoredBox;

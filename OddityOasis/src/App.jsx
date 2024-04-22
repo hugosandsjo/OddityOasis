@@ -3,7 +3,7 @@ import FactBox from "./components/FactBox";
 import Header from "./components/Header";
 import Button from "./components/Button";
 import ButtonContainer from "./components/ButtonContainer";
-import Bored from "./components/Bored";
+import BoredBox from "./components/BoredBox";
 
 import "./App.css";
 
@@ -35,7 +35,7 @@ function App() {
         selectedFact={selectedFact}
         randomClickCount={randomClickCount}
       />
-      {randomClickCount >= 3 && <Bored />}
+      {randomClickCount >= 3 && <BoredBox />}
     </>
   );
 }

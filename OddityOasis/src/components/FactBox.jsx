@@ -67,11 +67,14 @@ function FactBox({ selectedFact, randomClickCount }) {
         transition={{ duration: 0.6, delay: 0.2 }}
       >
         <Heading1>
-          {selectedFact === "random" ? "Random Fact" : "Daily Fact"}
+          {selectedFact === "random" ? "Random Fact" : "Daily Fact"}{" "}
         </Heading1>
         <Paragraph>
           {selectedFact === "random" ? randomFact : dailyFact}
         </Paragraph>
+        {selectedFact === "random" && (
+          <Paragraph>Random facts read: {randomClickCount}</Paragraph>
+        )}
       </FactBoxContainer>
     </>
   );
