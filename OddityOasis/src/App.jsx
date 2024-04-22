@@ -4,8 +4,8 @@ import Header from "./components/Header";
 import Button from "./components/Button";
 import ButtonContainer from "./components/ButtonContainer";
 import Bored from "./components/Bored";
-
 import "./App.css";
+import BodyWrapper from "./components/BodyWrapper";
 
 function App() {
   const [selectedFact, setSelectedFact] = useState("daily");
@@ -20,12 +20,12 @@ function App() {
   const buttons = [
     { text: "Random fact", onClick: handleRandomButtonClick },
     { text: "Today's fact", onClick: () => setSelectedFact("daily") },
-    { text: "All facts", onClick: () => {} },
   ];
 
   return (
     <>
       <Header />
+      <BodyWrapper>
       <ButtonContainer>
         {buttons.map((button, index) => (
           <Button key={index} text={button.text} onClick={button.onClick} />

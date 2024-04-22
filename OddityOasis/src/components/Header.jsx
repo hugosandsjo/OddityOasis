@@ -4,15 +4,19 @@ const HeaderComponent = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ededed;
   margin: 0;
-  padding: 1rem;
+  padding: 2rem;
+`;
+
+const Header1 = styled.h1`
+  font-size: 32px;
+  font-weight: 400;
 `;
 
 function Header() {
   return (
     <HeaderComponent>
-      <h1>Oddity Oasis</h1>
+      <Header1>Oddity Oasis</Header1>
       <div>Menu</div>
     </HeaderComponent>
   );
