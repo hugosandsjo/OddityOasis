@@ -14,6 +14,7 @@ function App() {
   const handleRandomButtonClick = () => {
     setSelectedFact("random");
     setRandomClickCount((prevCount) => prevCount + 1);
+    console.log(randomClickCount);
   };
 
   const buttons = [
@@ -30,7 +31,10 @@ function App() {
           <Button key={index} text={button.text} onClick={button.onClick} />
         ))}
       </ButtonContainer>
-      <FactBox selectedFact={selectedFact} />
+      <FactBox
+        selectedFact={selectedFact}
+        randomClickCount={randomClickCount}
+      />
       {randomClickCount >= 3 && <Bored />}
     </>
   );
