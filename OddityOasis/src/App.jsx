@@ -31,11 +31,13 @@ function App() {
           <Button key={index} text={button.text} onClick={button.onClick} />
         ))}
       </ButtonContainer>
-      <FactBox
-        selectedFact={selectedFact}
-        randomClickCount={randomClickCount}
-      />
-      {randomClickCount >= 3 && <BoredBox />}
+      <BodyWrapper>
+        <FactBox
+          selectedFact={selectedFact}
+          randomClickCount={randomClickCount}
+        />
+        {randomClickCount >= 3 && <BoredBox />}
+      </BodyWrapper>
     </>
   );
 }
