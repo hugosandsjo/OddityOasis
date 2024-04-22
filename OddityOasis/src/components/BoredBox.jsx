@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
+import Button from "./Button";
 
 function BoredBox() {
   const [activity, setActivity] = useState(null);
-  const [selectedType, setSelectedType] = useState("");
+  const [selectedType] = useState("");
 
   async function fetchActivity(type) {
     try {
@@ -24,21 +25,17 @@ function BoredBox() {
     fetchActivity(selectedType);
   }, [selectedType]);
 
-  const handleTypeChange = (event) => {
-    setSelectedType(event.target.value);
-  };
-
   return (
     <div>
-      <h1>Feeling Bored?</h1>
-      <p>Pick an activity type:</p>
-      <select value={selectedType} onChange={handleTypeChange}>
-        <option value="">All</option>
-        <option value="education">Education</option>
-        <option value="recreational">Recreational</option>
-      </select>
-      <p>Here's an idea:</p>
-      <p>{activity}</p>
+      <h1>Hmm.. You seem bored</h1>
+      <p>Maybe try this activity:</p>
+      <p>&#10024; {activity}? &#10024;</p>
+      <p>Not feeling it? Generate new activity below</p>
+      <Button
+        text="Recreational"
+        onClick={() => fetchActivity("recreational")}
+      />
+      <Button text="Education" onClick={() => fetchActivity("education")} />
     </div>
   );
 }
