@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styled from "@emotion/styled";
 import FactBox from "./components/FactBox";
 import Header from "./components/Header";
 import Button from "./components/Button";
@@ -8,6 +9,15 @@ import BodyWrapper from "./components/BodyWrapper";
 import GenerateIcon from "./assets/generate.svg";
 
 import "./App.css";
+
+const Section = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+`;
 
 function App() {
   const [selectedFact, setSelectedFact] = useState("daily");
@@ -40,11 +50,14 @@ function App() {
   const renderGenerateIcon = () => {
     if (selectedFact === "random") {
       return (
-        <img
-          src={GenerateIcon}
-          onClick={handleRandomButtonClick}
-          alt="Generate Icon"
-        />
+        <div>
+          <img
+            src={GenerateIcon}
+            onClick={handleRandomButtonClick}
+            alt="Generate Icon"
+            style={{ cursor: "pointer", width: "100px" }}
+          />
+        </div>
       );
     }
     return null;
@@ -77,8 +90,10 @@ function App() {
   return (
     <>
       <Header />
-      <ButtonContainer>{renderButtons()}</ButtonContainer>
-      {renderMainContent()}
+      <Section>
+        <ButtonContainer>{renderButtons()}</ButtonContainer>
+        {renderMainContent()}
+      </Section>
     </>
   );
 }

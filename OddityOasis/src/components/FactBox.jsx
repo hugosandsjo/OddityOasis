@@ -7,21 +7,13 @@ const FactBoxContainer = styled(motion.div)`
   flex-direction: column;
   text-align: left;
   padding: 0 2rem;
-
-  @media screen and (min-width: 768px) {
-    justify-content: center;
-    align-items: center;
-  }
 `;
 
 const Heading1 = styled.h1`
   font-size: 78px;
   font-weight: 300;
   line-height: 1.2;
-  margin: 0.5rem 0;
-  @media screen and (min-width: 768px) {
-    margin-left: -2rem;
-  }
+  margin: 0;
 `;
 
 const Paragraph = styled.p`

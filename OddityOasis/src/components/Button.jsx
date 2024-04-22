@@ -7,7 +7,6 @@ const ButtonComponent = styled(motion.button)`
   padding: 12px 24px;
   border-radius: 5px;
   border: 2px solid black;
-  border-radius: 2rem;
 
   &:hover {
     background-color: #b0b0b0;
@@ -16,6 +15,7 @@ const ButtonComponent = styled(motion.button)`
 `;
 
 function Button({ text, onClick, className }) {
+  console.log({ text, onClick, className });
   return (
     <ButtonComponent
       initial={{ opacity: 0 }}
