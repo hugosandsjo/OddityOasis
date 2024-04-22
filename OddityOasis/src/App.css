@@ -13,3 +13,8 @@ body {
 main {
   margin: 64px;
 }
+
+.selectedButton {
+  background-color: black;
+  color: white;
+}
