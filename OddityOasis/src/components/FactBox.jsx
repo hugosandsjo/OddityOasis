@@ -7,6 +7,10 @@ const FactBoxContainer = styled(motion.div)`
   flex-direction: column;
   text-align: left;
   padding: 0 2rem;
+
+  @media (min-width: 768px) {
+    width: 650px;
+  }
 `;
 
 const Heading1 = styled.h1`

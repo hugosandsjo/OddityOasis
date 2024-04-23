@@ -21,11 +21,10 @@ const Section = styled.div`
 
 const ImgWrapper = styled.div`
   display: flex;
-  /* background-color: #6e6e8a; */
-  padding: 2rem 0 0 0;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  margin: 0 0 0 5rem;
+  max-height: 400px;
 `;
 
 function App() {
@@ -61,10 +60,10 @@ function App() {
       return (
         <ImgWrapper>
           <img
+            className="randomButton"
             src={GenerateIcon}
             onClick={handleRandomButtonClick}
             alt="Generate Icon"
-            style={{ cursor: "pointer", width: "100px" }}
           />
         </ImgWrapper>
       );
@@ -91,7 +90,6 @@ function App() {
           randomClickCount={randomClickCount}
         />
         {renderGenerateIcon()}
-        {randomClickCount >= 3 && <BoredBox />}
       </BodyWrapper>
     );
   };
@@ -100,7 +98,9 @@ function App() {
     <>
       <Header />
       <Section>
-        <ButtonContainer>{renderButtons()}</ButtonContainer>
+        <ButtonContainer>
+          {renderButtons()} {randomClickCount >= 3 && <BoredBox />}
+        </ButtonContainer>
         {renderMainContent()}
       </Section>
     </>
