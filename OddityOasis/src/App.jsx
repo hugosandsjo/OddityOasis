@@ -19,6 +19,15 @@ const Section = styled.div`
   }
 `;
 
+const ImgWrapper = styled.div`
+  display: flex;
+  /* background-color: #6e6e8a; */
+  padding: 2rem 0 0 0;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`;
+
 function App() {
   const [selectedFact, setSelectedFact] = useState("daily");
   const [randomClickCount, setRandomClickCount] = useState(0);
@@ -50,14 +59,14 @@ function App() {
   const renderGenerateIcon = () => {
     if (selectedFact === "random") {
       return (
-        <div>
+        <ImgWrapper>
           <img
             src={GenerateIcon}
             onClick={handleRandomButtonClick}
             alt="Generate Icon"
             style={{ cursor: "pointer", width: "100px" }}
           />
-        </div>
+        </ImgWrapper>
       );
     }
     return null;
