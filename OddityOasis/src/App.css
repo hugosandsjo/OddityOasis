@@ -18,3 +18,12 @@ main {
   background-color: black;
   color: white;
 }
+
+.randomButton {
+  cursor: pointer;
+  width: 100px;
+}
+
+.randomButton:hover {
+  opacity: 0.5;
+}

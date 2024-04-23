@@ -6,6 +6,7 @@ const Buttons = styled(motion.div)`
   flex-direction: row;
   gap: 10px;
   padding: 1rem 2rem 1rem 2rem;
+  width: 300px;
   @media (min-width: 768px) {
     flex-direction: column;
   }
