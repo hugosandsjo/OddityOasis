@@ -13,18 +13,21 @@ import "./App.css";
 const Section = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 2rem;
 
   @media (min-width: 768px) {
     flex-direction: row;
   }
 `;
 
-const ImgWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 0 0 5rem;
-  max-height: 400px;
+const Image = styled.img`
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+    border-radius: 90px 90px 5px 5px;
+    width: 250px;
+    height: 350px;
+  }
 `;
 
 function App() {
@@ -55,22 +58,6 @@ function App() {
     },
   ];
 
-  const renderGenerateIcon = () => {
-    if (selectedFact === "random") {
-      return (
-        <ImgWrapper>
-          <img
-            className="randomButton"
-            src={GenerateIcon}
-            onClick={handleRandomButtonClick}
-            alt="Generate Icon"
-          />
-        </ImgWrapper>
-      );
-    }
-    return null;
-  };
-
   const renderButtons = () => {
     return buttons.map((button, index) => (
       <Button
@@ -78,6 +65,11 @@ function App() {
         text={button.text}
         onClick={button.onClick}
         className={button.className}
+        icon={
+          button.text === "Random fact" && selectedButton === 0
+            ? GenerateIcon
+            : null
+        }
       />
     ));
   };
@@ -85,11 +77,11 @@ function App() {
   const renderMainContent = () => {
     return (
       <BodyWrapper>
+        <ButtonContainer>{renderButtons()}</ButtonContainer>{" "}
         <FactBox
           selectedFact={selectedFact}
           randomClickCount={randomClickCount}
         />
-        {renderGenerateIcon()}
       </BodyWrapper>
     );
   };
@@ -98,11 +90,10 @@ function App() {
     <>
       <Header />
       <Section>
-        <ButtonContainer>
-          {renderButtons()} {randomClickCount >= 3 && <BoredBox />}
-        </ButtonContainer>
+        <Image src="./src/assets/images/desert.jpg" alt="desert" />
         {renderMainContent()}
       </Section>
+      {randomClickCount >= 5 && <BoredBox />}
     </>
   );
 }

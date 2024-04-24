@@ -6,24 +6,31 @@ const FactBoxContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   text-align: left;
-  padding: 0 2rem;
-
+  padding: 1rem 0;
   @media (min-width: 768px) {
-    width: 650px;
+    max-width: 750px;
+    padding: 0 2rem;
   }
 `;
 
 const Heading1 = styled.h1`
-  font-size: 78px;
+  font-size: 52px;
   font-weight: 300;
   line-height: 1.2;
   margin: 0;
+  @media (min-width: 768px) {
+    font-size: 78px;
+  }
 `;
 
 const Paragraph = styled.p`
-  font-size: 32px;
+  font-size: 24px;
   line-height: 1.4;
-  max-width: 520px;
+  max-width: 750px;
+  margin-top: 1rem;
+  @media (min-width: 768px) {
+    font-size: 32px;
+  }
 `;
 
 function FactBox({ selectedFact, randomClickCount }) {
