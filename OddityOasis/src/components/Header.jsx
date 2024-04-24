@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 
 const HeaderComponent = styled.header`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin: 0;
   padding: 0 2rem;

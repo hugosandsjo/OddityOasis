@@ -7,7 +7,7 @@ body {
   margin: 0;
   font-family: "Platypi", sans-serif;
   font-weight: 400;
-  background-color: rgb(252, 249, 244);
+  background-color: white;
 }
 
 main {
@@ -15,15 +15,20 @@ main {
 }
 
 .selectedButton {
-  background-color: black;
-  color: white;
+  background-color: #29211d !important;
+  color: white !important;
+  border: 2px solid #29211d !important;
 }
 
 .randomButton {
   cursor: pointer;
-  width: 100px;
+  width: 50px;
 }
 
 .randomButton:hover {
   opacity: 0.5;
+}
+
+p {
+  margin: 0;
 }

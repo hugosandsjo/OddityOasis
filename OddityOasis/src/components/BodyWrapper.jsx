@@ -5,8 +5,7 @@ const Wrapper = styled.div`
   flex-direction: column;
 
   @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
     height: 500px;
   }
 `;

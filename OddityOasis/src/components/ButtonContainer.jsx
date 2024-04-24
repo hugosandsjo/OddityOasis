@@ -3,12 +3,14 @@ import styled from "@emotion/styled";
 
 const Buttons = styled(motion.div)`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 10px;
-  padding: 1rem 2rem 1rem 2rem;
-  width: 300px;
+  max-width: 300px;
   @media (min-width: 768px) {
-    flex-direction: column;
+    flex-direction: row;
+    width: 100%;
+    padding-left: 2rem;
+    max-width: 500px;
   }
 `;
 
