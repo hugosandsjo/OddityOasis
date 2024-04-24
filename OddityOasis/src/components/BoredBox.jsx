@@ -114,7 +114,7 @@ function BoredBox() {
         <CloseButton
           ref={closeButtonRef}
           onClick={handleCloseClick}
-          src="./src/assets/close.svg"
+          src="/assets/close.svg"
           alt="close"
           isRotated={isRotated}
         />

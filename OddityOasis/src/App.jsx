@@ -6,7 +6,7 @@ import Button from "./components/Button";
 import ButtonContainer from "./components/ButtonContainer";
 import BoredBox from "./components/BoredBox";
 import BodyWrapper from "./components/BodyWrapper";
-import GenerateIcon from "./assets/generate.svg";
+import GenerateIcon from "/assets/generate.svg";
 
 import "./App.css";
 
@@ -90,7 +90,7 @@ function App() {
     <>
       <Header />
       <Section>
-        <Image src="./src/assets/images/desert.jpg" alt="desert" />
+        <Image src="/assets/images/desert.jpg" alt="desert" />
         {renderMainContent()}
       </Section>
       {randomClickCount >= 5 && <BoredBox />}
