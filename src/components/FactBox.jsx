@@ -43,7 +43,7 @@ function FactBox({ selectedFact, randomClickCount }) {
         "https://uselessfacts.jsph.pl/random.json?language=en"
       );
       const data = await response.json();
-      console.log(data.text);
+
       setRandomFact(data.text);
     } catch {
       console.log("error");
@@ -56,7 +56,7 @@ function FactBox({ selectedFact, randomClickCount }) {
         "https://uselessfacts.jsph.pl/today.json?language=en"
       );
       const data = await response.json();
-      console.log(data.text);
+
       setDailyFact(data.text);
     } catch {
       console.log("error");
