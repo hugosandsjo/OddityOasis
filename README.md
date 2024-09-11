@@ -13,6 +13,8 @@ A website for the bored. Get todays fun fact or a random fact. After a few butto
    npm run dev
    ```
 
+   https://oddity-oasis.vercel.app/
+
 
 # React + Vite
 
