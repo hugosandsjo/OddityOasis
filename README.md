@@ -1,13 +1,8 @@
-# Oddity Oasis
+# React + Vite
 
-Oddity Oasis is a site for the bored. Get a daily fact or a random fact. If you are really bored Oddity Oasis will give you a few suggestions on what to do.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-# Overview
+Currently, two official plugins are available:
 
-The project uses vite, react
-
-# Getting started with development
-
-
-
-
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
