@@ -1,17 +1,30 @@
 # Oddity Oasis
 
-A website for the bored. Get todays fun fact or a random fact. After a few buttonclicks the site will suggest an activity
+Oddity Oasis is a website for the bored. Get todays fun fact or a random fact. After a few buttonclicks the site will suggest an activity
+
+# Overview
+
+Oddity Oasis uses:
+
+React
+Vite
+Framer motion
+Emiton styled components
 
 # Installation
 
 1. Clone repository locally
 
+2. Install and run the local dev environment
 
+   
    ```bash
    cd OddityOasis
    npm install
    npm run dev
    ```
+
+3. Visit http://localhost:5174/
 
    https://oddity-oasis.vercel.app/
 
