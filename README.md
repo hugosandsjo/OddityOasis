@@ -1,6 +1,6 @@
 # Oddity Oasis
 
-A website for the bored. Get todays fun fact or a random fact. After a few buttonclicks the site will suggest an acitivity 
+A website for the bored. Get todays fun fact or a random fact. After a few buttonclicks the site will suggest an activity
 
 # Installation
 
