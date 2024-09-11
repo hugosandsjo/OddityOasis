@@ -70,7 +70,9 @@ function BoredBox() {
   const [isClosed, setIsClosed] = useState(false);
   const [isRotated, setIsRotated] = useState(false);
 
+
   // comment comment
+
 
   async function fetchActivity(type) {
     try {
