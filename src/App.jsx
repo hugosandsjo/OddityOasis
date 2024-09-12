@@ -88,9 +88,9 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header/>
       <Section>
-        <Image src="/assets/images/desert.jpg" alt="desert" />
+        <Image className="desert" src="/assets/images/desert.jpg" alt="desert" />
         {renderMainContent()}
       </Section>
       {randomClickCount >= 5 && <BoredBox />}
