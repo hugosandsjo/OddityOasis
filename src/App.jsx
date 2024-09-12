@@ -14,6 +14,8 @@ const Section = styled.div`
   display: flex;
   flex-direction: column;
   padding: 2rem;
+  width: fit-content;
+  margin:0 auto;
 
   @media (min-width: 768px) {
     flex-direction: row;
