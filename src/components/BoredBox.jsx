@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import Button from "./Button";
 
 const BoredWrapper = styled(motion.div)`
-  position: absolute;
-  width: 100vw;
+  position: fixed;
+  width: 100%;
   bottom: 0;
   display: flex;
   flex-direction: row;
