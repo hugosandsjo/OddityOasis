@@ -32,3 +32,13 @@ main {
 p {
   margin: 0;
 }
+
+.desert {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.desert:hover {
+  transform: scale(1.1);
+}
