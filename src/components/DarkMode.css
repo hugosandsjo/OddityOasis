@@ -1,0 +1,43 @@
+.dark-mode-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.dark-mode-toggle button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.dark-mode-toggle button:hover {
+  background-color: #444;
+}
+
+.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark-mode .desert {
+  filter: brightness(0.5);
+}
+
+/* Add styles for Dark Mode */
+.dark-mode body {
+  background-color: #333;
+}
+
+.dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6 {
+  color: #fff;
+}
+
+.dark-mode p {
+  color: #ccc;
+}
+
+/* Add more styles as needed */

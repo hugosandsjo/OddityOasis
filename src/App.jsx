@@ -9,6 +9,7 @@ import BodyWrapper from "./components/BodyWrapper";
 import GenerateIcon from "/assets/generate.svg";
 
 import "./App.css";
+import DarkModeToggle from "./components/DarkModeToggle";
 
 const Section = styled.div`
   display: flex;
@@ -92,6 +93,7 @@ function App() {
     <>
       <Header/>
       <Section>
+        <DarkModeToggle />
         <Image className="desert" src="/assets/images/desert.jpg" alt="desert" />
         {renderMainContent()}
       </Section>
