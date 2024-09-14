@@ -4,25 +4,25 @@ import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import "./DarkMode.css";
 
 const DarkModeToggle = () => {
-  const [darkMode, setDarkMode] = useState(false);
+	const [darkMode, setDarkMode] = useState(false);
 
-  const handleToggle = () => {
-    setDarkMode(!darkMode);
-  };
+	const handleToggle = () => {
+		setDarkMode((prev) => !prev);
+	};
 
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add("dark-mode");
-    } else {
-      document.body.classList.remove("dark-mode");
-    }
-  }, [darkMode]);
+	useEffect(() => {
+		if (darkMode) {
+			document.body.classList.add("dark-mode");
+		} else {
+			document.body.classList.remove("dark-mode");
+		}
+	}, [darkMode]);
 
-  return (
-    <button className="dark-mode-toggle" onClick={handleToggle}>
-      <FontAwesomeIcon icon={darkMode ? faSun : faMoon} size="2x" />
-    </button>
-  );
+	return (
+		<button className="dark-mode-toggle" onClick={handleToggle}>
+			<FontAwesomeIcon icon={darkMode ? faSun : faMoon} size="2x" />
+		</button>
+	);
 };
 
 export default DarkModeToggle;
