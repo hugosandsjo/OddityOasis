@@ -7,6 +7,7 @@ import ButtonContainer from "./components/ButtonContainer";
 import BoredBox from "./components/BoredBox";
 import BodyWrapper from "./components/BodyWrapper";
 import GenerateIcon from "/assets/generate.svg";
+import DesertImg from "/assets/image/desert.jpg"
 
 import "./App.css";
 import DarkModeToggle from "./components/DarkModeToggle";
@@ -94,7 +95,7 @@ function App() {
       <Header/>
       <Section>
         <DarkModeToggle />
-        <Image className="desert" src="/assets/images/desert.jpg" alt="desert" />
+        <Image className="desert" src={DesertImg} alt="desert" />
         {renderMainContent()}
       </Section>
       {randomClickCount >= 5 && <BoredBox />}
