@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 import Button from "./Button";
+import CloseIcon from "/assets/close.svg";
+import { fetchActivity } from "../services/api";
 
 const BoredWrapper = styled(motion.div)`
 	position: fixed;
@@ -65,31 +67,18 @@ const CloseButton = styled.img`
 `;
 
 function BoredBox() {
-	const [activity, setActivity] = useState(null);
-	const [selectedType] = useState("");
+	const [activity, setActivity] = useState<string | null>(null);
 	const [isClosed, setIsClosed] = useState(false);
 	const [isRotated, setIsRotated] = useState(false);
 
-	// comment comment
-
-	async function fetchActivity(type: string) {
-		try {
-			let url = "https://www.boredapi.com/api/activity";
-			if (type) {
-				url += `?type=${type}`;
-			}
-
-			const response = await fetch(url);
-			const data = await response.json();
-			setActivity(data.activity);
-		} catch {
-			console.log("error");
-		}
-	}
-
 	useEffect(() => {
-		fetchActivity(selectedType);
-	}, [selectedType]);
+		async function loadInitialActivity() {
+			const initialActivity = await fetchActivity("recreational");
+			setActivity(initialActivity);
+		}
+
+		loadInitialActivity();
+	}, []);
 
 	const handleCloseClick = () => {
 		setIsClosed((prevIsClosed) => !prevIsClosed);
@@ -116,7 +105,7 @@ function BoredBox() {
 				<CloseButton
 					ref={closeButtonRef}
 					onClick={handleCloseClick}
-					src="/assets/close.svg"
+					src={CloseIcon}
 					alt="close"
 					isRotated={isRotated}
 				/>
@@ -133,11 +122,15 @@ function BoredBox() {
 				<ButtonWrapper className="content-element">
 					<Button
 						text="Recreational"
-						onClick={() =>  fetchActivity("recreational")}
+						onClick={() =>
+							fetchActivity("recreational").then(setActivity)
+						}
 					/>
 					<Button
 						text="Education"
-						onClick={() => fetchActivity("education")}
+						onClick={() =>
+							fetchActivity("education").then(setActivity)
+						}
 					/>
 				</ButtonWrapper>
 			</BoredContent>
