@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
+import { fetchFact } from "../services/api";
 
 const FactBoxContainer = styled(motion.div)`
 	display: flex;
@@ -39,41 +40,19 @@ interface FactBoxProps {
 }
 
 function FactBox({ selectedFact, randomClickCount }: FactBoxProps) {
-	const [randomFact, setRandomFact] = useState(null);
-	const [dailyFact, setDailyFact] = useState(null);
-
-	async function fetchRandomFact() {
-		try {
-			const response = await fetch(
-				"https://uselessfacts.jsph.pl/random.json?language=en"
-			);
-			const data = await response.json();
-
-			setRandomFact(data.text);
-		} catch {
-			console.log("error");
-		}
-	}
-
-	async function fetchDailyFact() {
-		try {
-			const response = await fetch(
-				"https://uselessfacts.jsph.pl/today.json?language=en"
-			);
-			const data = await response.json();
-
-			setDailyFact(data.text);
-		} catch {
-			console.log("error");
-		}
-	}
+	const [randomFact, setRandomFact] = useState<string | null>(null);
+	const [dailyFact, setDailyFact] = useState<string | null>(null);
 
 	useEffect(() => {
-		if (selectedFact === "random") {
-			fetchRandomFact();
-		} else if (selectedFact === "daily") {
-			fetchDailyFact();
-		}
+		const setFact = async () => {
+			if (selectedFact === "random") {
+				setRandomFact(await fetchFact("random"));
+			}
+			if (selectedFact === "daily" && !dailyFact) {
+				setDailyFact(await fetchFact("today"));
+			}
+		};
+		setFact();
 	}, [selectedFact, randomClickCount]);
 
 	return (
@@ -83,7 +62,7 @@ function FactBox({ selectedFact, randomClickCount }: FactBoxProps) {
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, delay: 0.2 }}>
 				<Heading1>
-					{selectedFact === "random" ? "Random Fact" : "Daily Fact"}{" "}
+					{(selectedFact === "random" ? "Random" : "Daily") + " Fact"}
 				</Heading1>
 				<Paragraph>
 					{selectedFact === "random" ? randomFact : dailyFact}
