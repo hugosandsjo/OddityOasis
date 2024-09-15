@@ -35,7 +35,6 @@ interface ButtonProps {
 }
 
 function Button({ text, onClick, className, icon }: ButtonProps) {
-	console.log({ text, onClick, className });
 	return (
 		<ButtonComponent
 			initial={{ opacity: 0 }}

@@ -43,7 +43,6 @@ function App() {
 		setSelectedFact("random");
 		setRandomClickCount((prevCount) => prevCount + 1);
 		setSelectedButton(0);
-		console.log(randomClickCount);
 	};
 
 	const buttons = [
