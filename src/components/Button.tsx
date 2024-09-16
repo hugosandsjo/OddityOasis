@@ -2,20 +2,22 @@ import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 
 const ButtonComponent = styled(motion.button)`
-	font-size: 16px;
+	--btn-clr: #29211d;
+	font-size: clamp(1em, 3vw, 1.25em);
+	text-wrap: nowrap;
 	font-weight: 600;
 	padding: 12px 24px;
 	border-radius: 5px;
-	border: 2px solid #29211d;
-	color: #29211d;
+	border: 2px solid var(--btn-clr);
+	color: var(--btn-clr);
 	align-items: center;
 	background-color: transparent;
 	display: flex;
 	justify-content: center;
 	text-align: center;
 	&:hover {
-		background-color: #29211d;
-		border: 2px solid #29211d;
+		background-color: var(--btn-clr);
+		border: 2px solid var(--btn-clr);
 		color: white;
 		cursor: pointer;
 		transition: all 0.3s ease;
@@ -24,7 +26,7 @@ const ButtonComponent = styled(motion.button)`
 
 const Icon = styled.img`
 	margin-left: 8px;
-	height: 20px; /* Adjust height as needed */
+	height: 20px;
 `;
 
 export interface ButtonProps {
