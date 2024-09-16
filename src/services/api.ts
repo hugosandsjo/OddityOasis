@@ -1,4 +1,4 @@
-export const fetchActivity = async (type: string) => {
+export const fetchActivity = async (type: string): Promise<string | null> => {
 	let url = "https://bored.api.lewagon.com/api/activity";
 	url += type ? `?type=${type}` : "";
 
@@ -12,7 +12,10 @@ export const fetchActivity = async (type: string) => {
 	}
 };
 
-export const fetchFact = async (type: string, lang = "en") => {
+export const fetchFact = async (
+	type: string,
+	lang = "en"
+): Promise<string | null> => {
 	let url = `https://uselessfacts.jsph.pl/${type}.json?language=${lang}`;
 	try {
 		const response = await fetch(url);
