@@ -27,21 +27,20 @@ const Icon = styled.img`
 	height: 20px; /* Adjust height as needed */
 `;
 
-interface ButtonProps {
+export interface ButtonProps {
 	text: string;
 	onClick: () => void;
 	className?: string;
 	icon?: string;
 }
 
-function Button({ text, onClick, className, icon }: ButtonProps) {
+function Button({ text, icon, ...attrs }: ButtonProps) {
 	return (
 		<ButtonComponent
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			transition={{ duration: 1.5 }}
-			onClick={onClick}
-			className={className}>
+			{...attrs}>
 			{text}
 			{icon && <Icon src={icon} alt="Icon" />}
 		</ButtonComponent>

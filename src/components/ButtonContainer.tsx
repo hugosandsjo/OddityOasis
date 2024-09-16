@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import styled from "@emotion/styled";
-import type { ReactNode } from "react";
+import Button, { ButtonProps } from "./Button";
 
 const Buttons = styled(motion.div)`
 	display: flex;
@@ -16,12 +16,12 @@ const Buttons = styled(motion.div)`
 `;
 
 interface ButtonContainerProps {
-	children: ReactNode;
+	buttons: ButtonProps[];
 }
 
-const ButtonContainer = ({ children }: ButtonContainerProps) => (
+const ButtonContainer = ({ buttons }: ButtonContainerProps) => (
 	<Buttons initial="initial" animate="animate">
-		{children}
+		{...buttons.map((button, index) => <Button key={index} {...button} />)}
 	</Buttons>
 );
 
