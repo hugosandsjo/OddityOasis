@@ -1,43 +1,29 @@
 .dark-mode-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-
-.dark-mode-toggle button {
-  background-color: #333;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.dark-mode-toggle button:hover {
-  background-color: #444;
+	background-color: transparent;
+	color: #333;
+	border: none;
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 1000;
 }
 
 .dark-mode {
-  background-color: #333;
-  color: #fff;
+	background-color: #333;
+	& :is(h1, h2, h3, h4, h5, h6) {
+		color: #fff;
+	}
+	& p {
+		color: #ddd;
+	}
 }
 
-.dark-mode .desert {
-  filter: brightness(0.5);
+.dark-mode button {
+	color: #ddd;
+	&:hover {
+		color: #fff;
+	}
 }
-
-/* Add styles for Dark Mode */
-.dark-mode body {
-  background-color: #333;
-}
-
-.dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6 {
-  color: #fff;
-}
-
-.dark-mode p {
-  color: #ccc;
-}
-
-/* Add more styles as needed */

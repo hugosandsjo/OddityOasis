@@ -1,11 +1,10 @@
-import { useState } from "react";
 import styled from "@emotion/styled";
+import { useState } from "react";
+import BodyWrapper from "./components/BodyWrapper";
+import BoredBox from "./components/BoredBox";
+import ButtonContainer from "./components/ButtonContainer";
 import FactBox from "./components/FactBox";
 import Header from "./components/Header";
-import Button from "./components/Button";
-import ButtonContainer from "./components/ButtonContainer";
-import BoredBox from "./components/BoredBox";
-import BodyWrapper from "./components/BodyWrapper";
 import GenerateIcon from "/assets/generate.svg";
 import DesertImg from "/assets/images/desert.jpg";
 
@@ -34,69 +33,41 @@ const Image = styled.img`
 	}
 `;
 
-function App() {
-	const [selectedFact, setSelectedFact] = useState("daily");
-	const [randomClickCount, setRandomClickCount] = useState(0);
-	const [selectedButton, setSelectedButton] = useState(1);
+type FactType = "daily" | "random";
 
-	const handleRandomButtonClick = () => {
-		setSelectedFact("random");
-		setRandomClickCount((prevCount) => prevCount + 1);
-		setSelectedButton(0);
-		console.log(randomClickCount);
-	};
+function App() {
+	const [selectedFact, setSelectedFact] = useState<FactType>("daily");
+	const [randomClickCount, setRandomClickCount] = useState(0);
 
 	const buttons = [
 		{
 			text: "Today's fact",
 			onClick: () => {
 				setSelectedFact("daily");
-				setSelectedButton(1);
 			},
-			className: selectedButton === 1 ? "selectedButton" : "",
+			className: selectedFact === "daily" ? "selectedButton" : "",
+			icon: null,
 		},
 		{
 			text: "Random fact",
-			onClick: handleRandomButtonClick,
-			className: selectedButton === 0 ? "selectedButton" : "",
+			onClick: () => {
+				setSelectedFact("random");
+				setRandomClickCount((prevCount) => prevCount + 1);
+			},
+			className: selectedFact === "random" ? "selectedButton" : "",
+			icon: selectedFact === "random" && GenerateIcon,
 		},
 	];
-
-	const renderButtons = () => {
-		return buttons.map((button, index) => (
-			<Button
-				key={index}
-				text={button.text}
-				onClick={button.onClick}
-				className={button.className}
-				icon={
-					button.text === "Random fact" && selectedButton === 0
-						? GenerateIcon
-						: null
-				}
-			/>
-		));
-	};
-
-	const renderMainContent = () => {
-		return (
-			<BodyWrapper>
-				<ButtonContainer>{renderButtons()}</ButtonContainer>
-				<FactBox
-					selectedFact={selectedFact}
-					randomClickCount={randomClickCount}
-				/>
-			</BodyWrapper>
-		);
-	};
-
 	return (
 		<>
 			<Header />
 			<Section>
 				<DarkModeToggle />
 				<Image className="desert" src={DesertImg} alt="desert" />
-				{renderMainContent()}
+				<BodyWrapper>
+					<ButtonContainer buttons={buttons} />
+					<FactBox {...{ selectedFact, randomClickCount }} />
+				</BodyWrapper>
 			</Section>
 			{randomClickCount >= 5 && <BoredBox />}
 		</>

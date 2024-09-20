@@ -1,21 +1,25 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 import Button from "./Button";
+import CloseIcon from "/assets/close.svg";
+import { fetchActivity } from "../services/api";
 
 const BoredWrapper = styled(motion.div)`
 	position: fixed;
 	width: 100%;
 	bottom: 0;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
+	display: grid;
+	grid-template-rows: 1fr;
 	gap: 2rem;
 	border-radius: 25px 25px 0 0;
 	padding: 2rem;
 	background-color: #b2d2cd;
-	transition: all 0.6s ease;
+	transition: opacity 0.6s ease, filter 0.3s ease;
+
+	.dark-mode & {
+		background-color: #7292ad;
+	}
 `;
 
 const BoredContent = styled.div`
@@ -23,6 +27,11 @@ const BoredContent = styled.div`
 	flex-direction: column;
 	align-items: center;
 	gap: 1rem;
+	overflow: hidden;
+	.dark-mode & * {
+		color: #3f3f3f;
+	}
+	transition: 300ms ease;
 `;
 
 const Header1 = styled.h1`
@@ -40,17 +49,26 @@ const ParagraphMedium = styled.p`
 	background-color: #f0f0f0;
 	padding: 0.5rem 1rem;
 	border-radius: 50px;
+	.dark-mode & {
+		color: #333;
+	}
 `;
 
 const ParagraphSmall = styled.p`
 	font-size: 12px;
 	margin: 0;
+	.dark-mode & {
+		color: #555;
+	}
 `;
 
 const ButtonWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
 	gap: 1rem;
+	.dark-mode & *:hover {
+		color: #ccc;
+	}
 `;
 
 const CloseButton = styled.img`
@@ -65,79 +83,45 @@ const CloseButton = styled.img`
 `;
 
 function BoredBox() {
-	const [activity, setActivity] = useState(null);
-	const [selectedType] = useState("");
+	const [activity, setActivity] = useState<string | null>(null);
 	const [isClosed, setIsClosed] = useState(false);
-	const [isRotated, setIsRotated] = useState(false);
-
-	// comment comment
-
-	async function fetchActivity(type: string) {
-		try {
-			let url = "https://www.boredapi.com/api/activity";
-			if (type) {
-				url += `?type=${type}`;
-			}
-
-			const response = await fetch(url);
-			const data = await response.json();
-			setActivity(data.activity);
-		} catch {
-			console.log("error");
-		}
-	}
 
 	useEffect(() => {
-		fetchActivity(selectedType);
-	}, [selectedType]);
-
-	const handleCloseClick = () => {
-		setIsClosed((prevIsClosed) => !prevIsClosed);
-		setIsRotated((prevIsRotated) => !prevIsRotated);
-
-		const contentElements =
-			document.querySelectorAll<HTMLElement>(".content-element");
-		contentElements.forEach((element) => {
-			if (element !== closeButtonRef.current) {
-				element.style.display = isClosed ? "flex" : "none";
-				closeButtonRef.current!.style.transform = `${isRotated}`;
-			}
-		});
-	};
-
-	const closeButtonRef = React.useRef<HTMLImageElement>(null);
+		fetchActivity("recreational").then(setActivity);
+	}, []);
 
 	return (
 		<BoredWrapper
 			initial={{ opacity: 0, y: 50 }}
-			animate={{ opacity: 1, y: 0, height: isClosed ? "auto" : "auto" }}
+			animate={{
+				opacity: 1,
+				y: 0,
+				gridTemplateRows: isClosed ? "0fr" : "1fr",
+			}}
 			transition={{ duration: 0.6, delay: 0.2 }}>
-			<BoredContent>
+			<BoredContent className="bored-content">
 				<CloseButton
-					ref={closeButtonRef}
-					onClick={handleCloseClick}
-					src="/assets/close.svg"
+					onClick={() => setIsClosed((prev) => !prev)}
+					src={CloseIcon}
 					alt="close"
-					isRotated={isRotated}
+					isRotated={isClosed}
 				/>
-				<Header1 className="content-element">
-					Hmm.. You seem bored
-				</Header1>
-				<p className="content-element">How about..</p>
-				<ParagraphMedium className="content-element">
-					&#x2728; {activity} &#x2728;
-				</ParagraphMedium>
-				<ParagraphSmall className="content-element">
-					Generate new activity
-				</ParagraphSmall>
-				<ButtonWrapper className="content-element">
+				<Header1>Hmm.. You seem bored</Header1>
+				<p>How about..</p>
+				<ParagraphMedium>&#x2728; {activity} &#x2728;</ParagraphMedium>
+				<ParagraphSmall>Generate new activity</ParagraphSmall>
+				<ButtonWrapper>
 					<Button
 						text="Recreational"
-						onClick={() =>  fetchActivity("recreational")}
+						onClick={() =>
+							fetchActivity("recreational").then(setActivity)
+						}
 					/>
 					<Button
 						text="Education"
-						onClick={() => fetchActivity("education")}
+						onClick={() =>
+							fetchActivity("education").then(setActivity)
+						}
 					/>
 				</ButtonWrapper>
 			</BoredContent>

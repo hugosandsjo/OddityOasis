@@ -1,45 +1,48 @@
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-  justify-content: center;
-  margin: 0;
-  font-family: "Platypi", sans-serif;
-  font-weight: 400;
-  background-color: white;
+	justify-content: center;
+	margin: 0;
+	font-family: "Platypi", sans-serif;
+	font-weight: 400;
+	background-color: white;
 }
 
 main {
-  margin: 64px;
+	margin: 64px;
 }
 
 .selectedButton {
-  background-color: #29211d !important;
-  color: white !important;
-  border: 2px solid #29211d !important;
+	background-color: #29211d !important;
+	color: white !important;
+	border: 2px solid #29211d !important;
 }
 
 .randomButton {
-  cursor: pointer;
-  width: 50px;
+	cursor: pointer;
+	width: 50px;
 }
 
 .randomButton:hover {
-  opacity: 0.5;
+	opacity: 0.5;
 }
 
 p {
-  margin: 0;
+	margin: 0;
 }
 
 .desert {
-  width: 100%;
-  height: auto;
-  transition: transform 0.3s ease-in-out;
+	width: 100%;
+	height: auto;
+	transition: transform 0.3s ease-in-out, filter 0.5s ease;
 }
 
 .desert:hover {
-  transform: scale(1.1);
+	transform: scale(1.1);
 }
 
+.dark-mode .desert {
+	filter: hue-rotate(222deg) brightness(0.7) contrast(1.5);
+}
